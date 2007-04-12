@@ -1,5 +1,6 @@
 = TODO: 
 
+* Write Tests.
 * Remove scaffolding and improve admin interface. 
 * Implement Akismet filter.
 * Email administrator when a comment is posted. 

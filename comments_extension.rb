@@ -29,7 +29,7 @@ class CommentsExtension < Radiant::Extension
     CommentTags
     
     Page.class_eval do
-      has_many :comments
+      has_many :comments, :dependent => :destroy
     end
   end
   
