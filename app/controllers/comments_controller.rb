@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   
+  no_login_required
+  
   def index
     render :text => params.inspect
   end

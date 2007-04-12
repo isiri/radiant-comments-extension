@@ -1,3 +1,7 @@
+= SVN
+
+* Added no_login_required to CommentsController. Comment should no longer force login when posted. 
+
 = 0.0.1
 
 * Basic comment functionality in place
