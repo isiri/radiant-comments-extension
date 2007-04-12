@@ -31,6 +31,9 @@ class CommentsExtension < Radiant::Extension
     Page.class_eval do
       has_many :comments
     end
-    
   end
+  
+  def deactivate
+  end
+  
 end
