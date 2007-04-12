@@ -19,7 +19,7 @@ class CreateComments < ActiveRecord::Migration
     add_column :pages, :comments_count,  :integer, :default => 0
     execute "UPDATE pages SET comments_count = 0"
     
-    # Requires Approval plugin
+    # Uses Approval plugin
     # http://svn.artofmission.com/svn/plugins/requires_approval
     create_table :approval_statuses do |t|
       t.column :name, :string

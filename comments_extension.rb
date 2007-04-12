@@ -3,7 +3,7 @@
 class CommentsExtension < Radiant::Extension
   version "0.0.1"
   description "Ads comment functionality to pages."
-  url "http://dev.radiantcms.org/radiant/browser/trunk/extensions/examples/hello_tag/"
+  url "http://svn.artofmission.com/svn/plugins/radiant/extensions/comments/"
   
   define_routes do |map|
     map.resources :comments, :path_prefix => "/pages/:page_id", :controller => "comments"

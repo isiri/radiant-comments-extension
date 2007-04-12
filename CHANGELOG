@@ -1,0 +1,10 @@
+= 0.0.1
+
+* Basic comment functionality in place
+
+== TODO: 
+
+* Remove scaffolding and improve admin interface. 
+* Implement Akismet filter.
+* Add user notifications when a comment is posted.
+* Email administrator when a comment is posted. 
