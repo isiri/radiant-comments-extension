@@ -1,0 +1,7 @@
+<%= content_tag("h1", @page.nil? ? "All Comments" : "Comments on #{link_to(@page.title, @page.url)}") %>
+
+<table border="0" cellspacing="0" cellpadding="0">
+  
+  <%= render :partial => "comment", :collection => @comments %>
+  
+</table>

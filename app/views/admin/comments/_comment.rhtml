@@ -1,0 +1,16 @@
+
+<tr>
+  <td>
+    <%= comment.author %>
+  </td>
+  
+  <td>
+    <%= comment.content %>
+  </td>
+  
+  <td>
+    <%= link_to "edit", admin_edit_comment_path(comment) %>
+    <%= link_to "destroy", admin_comment_path(comment), :method => "delete" %>
+  </td>
+  
+</tr>
