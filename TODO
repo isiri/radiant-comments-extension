@@ -1,0 +1,9 @@
+= TODO: 
+
+* Fix routes so that comments are no longer under the /admin area. Currently posting a comment will ask user to log in. This is bad and needs to change. 
+* Remove scaffolding and improve admin interface. 
+* Implement Akismet filter.
+* Email administrator when a comment is posted. 
+* Add text filter to comment body.
+* Validate inputs and handle error messages. 
+* Add user notification message when a comment is posted.
