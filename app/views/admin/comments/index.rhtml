@@ -1,7 +1,19 @@
-<%= content_tag("h1", @page.nil? ? "All Comments" : "Comments on #{link_to(@page.title, @page.url)}") %>
+<%= content_tag("h1", @page.nil? ? "All Comments" : "Comments on #{link_to(@page.title, page_edit_url(@page.id))}") %>
 
-<table border="0" cellspacing="0" cellpadding="0">
-  
-  <%= render :partial => "comment", :collection => @comments %>
-  
+<table id="comments" class="index" border="0" cellspacing="0" cellpadding="0">
+  <thead>
+  <tr>
+    <th>Comment</th>
+    <th colspan="2">Modify</th>
+  </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => "comment", :collection => (@comments) %>
+  </tbody>
 </table>
+
+<script type="text/javascript">
+// <![CDATA[
+  new RuledTable('comments');
+// ]]>
+</script>

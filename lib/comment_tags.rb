@@ -55,6 +55,17 @@ module CommentTags
     }
   end
   
+  desc %{
+    *Usage:* 
+    <pre><code><r:date [format="%A, %B %d, %Y"] /></code></pre>
+  }
+  tag 'comment:date' do |tag|
+    comment = tag.locals.comment
+    format = (tag.attr['format'] || '%A, %B %d, %Y')
+    date = comment.created_at
+    date.strftime(format)
+  end
+  
   #tag "comment:text_field" do |tag|
   #  attrs = tag.attr.symbolize_keys
   #  # text_field_tag(attrs[:name], attrs[:value]).inspect

@@ -2,23 +2,15 @@ class CommentsController < ApplicationController
   
   no_login_required
   
-  def index
-    render :text => params.inspect
-  end
-  
   def create
     
     @page = Page.find(params[:page_id])
     @comment = @page.comments.build(params[:comment])
-    
     ResponseCache.instance.expire_response(@page.url)
+    @comment.save
     
-    if @comment.save
-      flash[:notice] = "Thank you for your comment"
-    else
-      flash[:notice] = "Your comment was not saved"
-    end
-    redirect_to @page.url
+    comment_url = @page.url + '#comment_' + @comment.id.to_s
+    redirect_to comment_url
   end
   
 end

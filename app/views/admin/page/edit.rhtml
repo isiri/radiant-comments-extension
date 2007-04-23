@@ -167,7 +167,7 @@ end
         <label for="page_status_id">Allow Comments?</label> 
         <small>
           Currently <%= @page.comments.count %> &mdash;
-          <%= link_to "View comments", admin_page_comments_path(@page.id) unless @page.new_record? %>
+          <%= link_to "View comments", admin_page_comments_path(:page_id => @page.id) unless @page.new_record? %>
         </small>
       </p>
         
