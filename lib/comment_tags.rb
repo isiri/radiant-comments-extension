@@ -48,7 +48,6 @@ module CommentTags
     results = %Q{
       <form action="/pages/#{tag.locals.page.id}/comments" method="post" id="comment_form">
       <fieldset>
-      Comment Form:
       #{tag.expand}
       </fieldset>
       </form>
