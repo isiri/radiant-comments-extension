@@ -24,6 +24,9 @@ class CommentsExtension < Radiant::Extension
     Page.class_eval do
       has_many :comments, :dependent => :destroy
     end
+    
+    admin.page_edit_parts.add('Comments', 'comments')    
+    
   end
   
   def deactivate

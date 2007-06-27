@@ -1,0 +1,10 @@
+<% if @page.respond_to?(:comments) %>
+<div class="attachments-toolbar">
+<p style="clear:left"><%= check_box "page", "enable_comments" %>
+  <label for="page_enable_comments">Allow Comments?</label> 
+  <small>
+    <%= link_to "Currently #{@page.comments.count} &mdash; View comments", admin_page_comments_path(:page_id => @page.id) unless @page.new_record? or @page.comments.count < 1 %>
+  </small>
+</p>
+</div>
+<% end %>
