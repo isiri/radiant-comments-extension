@@ -10,7 +10,7 @@ module CommentTags
   
   desc %{}
   tag "if_comments" do |tag|
-    tag.expand if tag.locals.page.has_comments?
+    tag.expand if tag.locals.page.comments.count > 0
   end
   
   desc %{ All comment-related tags live inside this one. }
