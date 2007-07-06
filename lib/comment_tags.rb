@@ -114,13 +114,16 @@ module CommentTags
   
   #file submit reset checkbox radio
   
-  
   desc %{}
   tag "comments" do |tag|
     comments = tag.locals.page.comments
-    comments.inspect
+    tag.expand
   end
   
+  desc %{Prints the number of comments. }
+  tag "comments:count" do |tag|
+    tag.locals.page.comments.count
+  end
   
   protected
   
