@@ -1,5 +1,7 @@
-= SVN
+= 0.0.2
 
+* Added Akismet support. 
+* Added admin tools for moderating comments. 
 * Added destroy dependency to Page#Comments association. 
 * Added no_login_required to CommentsController. Comment should no longer force login when posted. 
 
