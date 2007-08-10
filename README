@@ -1,3 +1,9 @@
 = Comments Extension
 
 Adds blog-like comment functionality to Radiant. 
+
+== Dependencies
+
+* Requires Radiant 0.6.1 or greater. 
+* Requires the AdminParts extension (http://soxbox.no-ip.org/radiant/svn/extensions/admin_parts/)
+

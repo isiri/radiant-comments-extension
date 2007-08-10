@@ -1,5 +1,6 @@
-<tr>
+<tr class="<%= cycle("odd", "even") %>">
   <td>
+    <p><strong><%= link_to comment.page.title, comment.page.url %></strong> - <%= link_to "edit", page_edit_path(@page) %></p>
     <blockquote><%= comment.content %></blockquote>
     <cite class="author">&mdash;<%= comment.author_url.empty? ? comment.author : link_to(comment.author, "http://#{comment.author_url}") %></a></cite>
   </td>

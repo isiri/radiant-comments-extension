@@ -1,4 +1,5 @@
-<%= content_tag("h1", @page.nil? ? "All Comments" : "Comments on #{link_to(@page.title, page_edit_url(@page.id))}") %>
+<%= content_tag("h1", @page.nil? ? "All Comments" : "#{count = @page.nil? ? Comment.count : @page.comments.count} Comment#{"s" if count > 1} on #{link_to(@page.title, page_edit_url(@page.id))}") %>
+
 
 <table id="comments" class="index" border="0" cellspacing="0" cellpadding="0">
   <thead>
@@ -11,6 +12,8 @@
     <%= render :partial => "comment", :collection => (@comments) %>
   </tbody>
 </table>
+
+<%= will_paginate @comments %>
 
 <script type="text/javascript">
 // <![CDATA[

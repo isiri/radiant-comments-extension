@@ -1,0 +1,35 @@
+<div id="comment_form_container">
+
+<fieldset class="comment_form">
+  
+  <table border="0">
+    
+    <tr>
+      <th><label for="comment_author">Comment Author Name</label></th>
+      <td><%= f.text_field :author, :class => "regular" %></td>
+    </tr>
+
+    <tr>
+      <th><label for="comment_author_url">Comment Author URL</label></th>
+      <td><%= f.text_field :author_url, :class => "regular" %></td>
+    </tr>
+
+    <tr>
+      <th><label for="comment_author_email">Comment Author Email</label></th>
+      <td><%= f.text_field :author_email, :class => "regular" %></td>
+    </tr>
+    
+    <tr>
+      <th><label for="comment">Comment</label></th>
+      <td><%= f.text_area :content, :rows => 5, :class => "regular" %></td>
+    </tr>
+    
+  </table>  
+  
+  <%= submit_tag("Save comment", :class => "button", :id => "comment_submit_button") %> 
+  
+  <%= f.hidden_field :page_id %>
+  
+</fieldset>
+
+</div>
