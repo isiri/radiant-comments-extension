@@ -3,22 +3,30 @@ module CommentTags
   
   desc "Provides tags and behaviors to support comments in Radiant."
   
-  desc %{}
+  desc %{
+    Renders the contained elements if comments are enabled on the page. 
+  }
   tag "if_enable_comments" do |tag|
     tag.expand if (tag.locals.page.enable_comments?)
   end
   
-  desc %{}
+  desc %{
+    Renders the contained elements if the page has comments. 
+  }
   tag "if_comments" do |tag|
     tag.expand if tag.locals.page.comments.count > 0
   end
   
-  desc %{ All comment-related tags live inside this one. }
+  desc %{ 
+    Gives access to comment-related tags
+  }
   tag "comment" do |tag|
     tag.expand
   end
   
-  desc %{}
+  desc %{
+    Cycles through each comment and renders the enclosed tags for each. 
+  }
   tag "comment:each" do |tag|
     comments = tag.locals.page.comments
     result = []
@@ -29,6 +37,9 @@ module CommentTags
     result
   end
   
+  desc %{
+    Gives access to the particular fields for each comment. 
+  }
   tag "comment:field" do |tag|
     tag.expand
   end
@@ -42,7 +53,12 @@ module CommentTags
     end
   end
   
-  desc %{}
+  desc %{
+    Renders a comment form. 
+    
+    *Usage:*
+    <r:comment:form>...</r:comment:form>
+  }
   tag "comment:form" do |tag|
     @tag_attr = { :class => "comment_form" }.update( tag.attr.symbolize_keys )
     results = %Q{
@@ -55,6 +71,8 @@ module CommentTags
   end
   
   desc %{
+    Renders the date a comment was created. 
+    
     *Usage:* 
     <pre><code><r:date [format="%A, %B %d, %Y"] /></code></pre>
   }
@@ -64,13 +82,7 @@ module CommentTags
     date = comment.created_at
     date.strftime(format)
   end
-  
-  #tag "comment:text_field" do |tag|
-  #  attrs = tag.attr.symbolize_keys
-  #  # text_field_tag(attrs[:name], attrs[:value]).inspect
-  #  %{<input type="text" name="#{attrs[:name]}" value="#{attrs[:value]}" />}
-  #end
-  
+
   %w(text password hidden).each do |type|
     desc %{Builds a #{type} form field for comments.}
     tag "comment:#{type}_field_tag" do |tag|
@@ -81,7 +93,6 @@ module CommentTags
       r << %{ class="#{attrs[:class]}"} if attrs[:class]
       r << %{ value="#{attrs[:value]}" } if attrs[:value]
       r << %{ />}
-       
     end
   end
   
