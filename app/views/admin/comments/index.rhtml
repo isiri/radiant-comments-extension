@@ -1,5 +1,4 @@
-<%= content_tag("h1", @page.nil? ? "All Comments" : "#{count = @page.nil? ? Comment.count : @page.comments.count} Comment#{"s" if count > 1} on #{link_to(@page.title, page_edit_url(@page.id))}") %>
-
+<h1><%= @page.nil? ? "All Comments" : "#{@page.comments_count} #{pluralize(@page.comments_count, "Comment")} on #{link_to(@page.title, page_edit_url(@page.id))}" %></h1>
 
 <table id="comments" class="index" border="0" cellspacing="0" cellpadding="0">
   <thead>

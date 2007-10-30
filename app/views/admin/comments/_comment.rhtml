@@ -4,6 +4,6 @@
     <blockquote><%= comment.content %></blockquote>
     <cite class="author">&mdash;<%= comment.author_url.empty? ? comment.author : link_to(comment.author, "http://#{comment.author_url}") %></a></cite>
   </td>
-  <td class="edit"><%= link_to "edit", admin_edit_comment_path(:id => comment.id) %></td>
+  <td class="edit"><%= link_to "edit", edit_admin_comment_path(:id => comment.id) %></td>
   <td class="remove"><%= link_to image_tag('admin/remove.png', :alt => 'Remove Comment'), admin_comment_path(:id => comment.id), :method => :delete, :confirm => "Are you sure?" %></td>
 </tr>
