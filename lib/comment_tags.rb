@@ -121,6 +121,24 @@ module CommentTags
     r << %{</textarea>}
   end
   
+  desc %{Build a drop_box form field for the filters avaiable.}
+  tag "comment:filter_box_tag" do |tag|
+    attrs = tag.attr.symbolize_keys
+    r =  %{<select name="comment[#{attrs[:name]}]"}
+    r << %{ size="#{attrs[:size]}"} if attrs[:size]
+    r << %{>}
+    
+    TextFilter.descendants.each do |filter| 
+      
+      r << %{<option value="#{filter.filter_name}"}
+      r << %{ selected } if attrs[:value] == filter.filter_name
+      r << %{>#{filter.filter_name}</option>}
+      
+    end
+      
+    r << %{</select>}
+  end
+  
   #file submit reset checkbox radio
   
   desc %{}

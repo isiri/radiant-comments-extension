@@ -12,25 +12,13 @@ class CommentsController < ApplicationController
       c.author_url = params[:comment][:author_url]
       c.content = params[:comment][:content]
       c.filter_id = params[:comment][:filter_id]
+      c.request = request
     end
     
-    comment.request = request
-    
-    # TODO :: Remove this ugly code and replace it with something nice...
-    ####
-    case comment.filter_id
-      
-    when "Textile"
-      comment.content_html = TextileFilter.filter(comment.content)
-    when "Markdown"
-      comment.content_html = MarkdownFilter.filter(comment.content)
-    when "SmartyPants"
-      comment.content_html = SmartyPantsFilter.filter(comment.content)
-    else
-      comment.content_html = TextFilter.filter(comment.content)
+    TextFilter.descendants.each do |filter| 
+      comment.content_html = filter.filter(comment.content) if filter.filter_name == comment.filter_id    
     end
-    ####
-    
+                  
     
     if !comment.is_spam? and page.comments << comment 
       ResponseCache.instance.expire_response(page.url)

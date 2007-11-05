@@ -18,14 +18,18 @@ class Comment < ActiveRecord::Base
     self.referrer = request.env['HTTP_REFERER']
   end
   
+  
+  # TODO :: Move more of the code inside the model. For example the filter stuff.
+  
+  
   # Akismet Spam Filter
   # Marks a content item as spam unless it checks out with Akismet
   def is_spam?  
     # You'll need to get your own Akismet API key from www.akismet.com
     
-    return false;
+    #return false;
     
-    @akismet = Akismet.new('64bf8aa40154', 'http://hcfjeldberg.wordpress.com') 
+    @akismet = Akismet.new('key', 'webpage') 
     
     return nil unless @akismet.verifyAPIKey
     

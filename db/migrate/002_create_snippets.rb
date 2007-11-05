@@ -49,9 +49,9 @@ CONTENT
       <r:comment:text_field_tag name="author_url" class="regular validate-url" /></p>
 
       <p><label for="comment[content]">Your Comment</label><br />
+      <label for="comment[filter_id]">Filter: <r:comment:filter_box_tag name="filter_id" value="Textile" /><br />
       <r:comment:text_area_tag name="content" class="regular required" rows="9" cols="40" /></p>
 
-      <r:comment:hidden_field_tag name="filter_id" value="Textile" />
       <r:comment:submit_tag name="submit" value="Save Comment" />
 
     </r:comment:form>
