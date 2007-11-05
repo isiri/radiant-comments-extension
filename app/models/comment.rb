@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
-  belongs_to :page, :counter_cache => true
-
+  belongs_to :page
+  
   validates_presence_of :author, :author_email, :content
   
   def initialize
@@ -14,9 +14,10 @@ class Comment < ActiveRecord::Base
   
   # Akismet Spam Filter
   # Marks a content item as spam unless it checks out with Akismet
-  def is_spam?  
+  def is_spam?
+    
     # You'll need to get your own Akismet API key from www.akismet.com
-    #@akismet = Akismet.new('123456789', 'http://myblog.wordpress.com') 
+    # @akismet = Akismet.new('123456789', 'http://myblog.wordpress.com') 
     
     return nil unless @akismet.verifyAPIKey
     

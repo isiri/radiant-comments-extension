@@ -1,11 +1,6 @@
-unless defined? RADIANT_ROOT
-  ENV["RAILS_ENV"] = "test"
-  require "#{File.expand_path(File.dirname(__FILE__) + "/../../../../")}/config/boot"
-end
-require "#{RADIANT_ROOT}/test/test_helper"
+require File.dirname(__FILE__) + "/../../../../test/test_helper" unless defined? TEST_ROOT
 
 class Test::Unit::TestCase
   test_helper :extension_fixtures, :extension_tags
-  
-  self.fixture_path << File.dirname(__FILE__) + "/fixtures"
+  self.extension_fixture_path = File.dirname(__FILE__) + "/fixtures"
 end

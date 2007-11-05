@@ -1,7 +1,7 @@
 #require 'page_extender'
 
 class CommentsExtension < Radiant::Extension
-  version "0.0.3"
+  version "0.0.1"
   description "Ads comment functionality to pages."
   url "http://svn.artofmission.com/svn/plugins/radiant/extensions/comments/"
   
@@ -14,7 +14,10 @@ class CommentsExtension < Radiant::Extension
     end
   end
   
+  
   def activate
+    admin.tabs.add "Comments", "/admin/comments", :after => "Pages", :visibility => [:all]
+    
     Page.send :include, CommentTags
     Comment
     
@@ -22,9 +25,8 @@ class CommentsExtension < Radiant::Extension
       has_many :comments, :dependent => :destroy
     end
     
-    admin.page.edit.add :parts_bottom, "edit_comments_enabled", :before => "edit_timestamp"
-    admin.page.index.add :sitemap_head, "index_head_view_comments"
-    admin.page.index.add :node_row, "index_view_comments"
+    admin.page_edit_parts.add('Comments', 'comments')    
+    
   end
   
   def deactivate

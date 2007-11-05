@@ -1,4 +1,5 @@
 class Admin::CommentsController < ApplicationController
+  before_filter :no_login_required, :only => [new]
   
   def index
     @page = Page.find(params[:page_id]) if params[:page_id]
@@ -26,19 +27,6 @@ class Admin::CommentsController < ApplicationController
     rescue Exception => e
       flash[:notice] = "There was an error saving the comment"
     end
-  end
-  
-  def enable
-    
-    @page = Page.find(params[:page_id])
-    
-    @page.enable_comments = 1
-    
-    @page.update
-    
-    flash[:notice] = "Comments has been enabled for #{@page.title}"
-     
-    redirect_to page_index_path
   end
   
   protected

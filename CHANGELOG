@@ -1,11 +1,3 @@
-= 0.0.3
-* Changed dependency on admin_parts, and changed to shards. [hcf <at> stud <dot> ntnu <dot> no]
-* Added the snippets to a migration, so that the users no longer have to do this manually. [hcf <at> stud <dot> ntnu <dot> no]
-* Changed filter_id from integer to string to make it similar to radiant core. [hcf <at> stud <dot> ntnu <dot> no]
-* Removed the 'Comments' tab, and moved the functionality to the 'Pages' tab instead using shards. [hcf <at> stud <dot> ntnu <dot> no]
-* Added support for filters in comments, all though ugly coded. [hcf <at> stud <dot> ntnu <dot> no]
-* Simplified the comment snippets. [hcf <at> stud <dot> ntnu <dot> no]
-
 = 0.0.2
 
 * Added Akismet support. 

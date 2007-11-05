@@ -14,7 +14,7 @@ module CommentTags
     Renders the contained elements if the page has comments. 
   }
   tag "if_comments" do |tag|
-    tag.expand if tag.locals.page.comments_count > 0
+    tag.expand if tag.locals.page.comments.count > 0
   end
   
   desc %{ 
@@ -30,7 +30,7 @@ module CommentTags
   tag "comment:each" do |tag|
     comments = tag.locals.page.comments
     result = []
-    comments.reverse.each do |comment|
+    comments.each do |comment|
       tag.locals.comment = comment
       result << tag.expand
     end
@@ -63,7 +63,9 @@ module CommentTags
     @tag_attr = { :class => "comment_form" }.update( tag.attr.symbolize_keys )
     results = %Q{
       <form action="/pages/#{tag.locals.page.id}/comments" method="post" id="comment_form">
+      <fieldset>
       #{tag.expand}
+      </fieldset>
       </form>
     }
   end
@@ -131,7 +133,7 @@ module CommentTags
   
   desc %{Prints the number of comments. }
   tag "comments:count" do |tag|
-    tag.locals.page.comments_count
+    tag.locals.page.comments.count
   end
   
   protected
