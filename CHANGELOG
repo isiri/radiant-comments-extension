@@ -1,3 +1,12 @@
+= 0.0.4
+* renamed namespace tag "comment" to "comments" so that it works well with the "each" tag [John Long]
+* namespaced the comment attribute tags so that they can only be called within [John Long]
+* created form tags for the individual fields [John Long]
+* renamed the "if_enabled_comments" tag to "if_comments_enabled" [John Long]
+* added the "unless_comments" and "unless_comments_enabled" tags [John Long]
+* added an "index" tag so that you can get the number of the comment for the page [John Long]
+* other miscellaneous improvements [John Long]
+
 = 0.0.3
 * Changed dependency from admin_parts to shards. [hcf]
 * Added the snippets to a migration, so that the users no longer have to do this manually. [hcf]
