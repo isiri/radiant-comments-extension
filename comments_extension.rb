@@ -1,8 +1,9 @@
 #require 'page_extender'
+require_dependency 'application'
 
 class CommentsExtension < Radiant::Extension
   version "0.0.3"
-  description "Ads comment functionality to pages."
+  description "Adds blog-like comments and comment functionality to pages."
   url "http://svn.artofmission.com/svn/plugins/radiant/extensions/comments/"
   
   define_routes do |map|
@@ -22,11 +23,13 @@ class CommentsExtension < Radiant::Extension
       has_many :comments, :dependent => :destroy
     end
     
-    admin.page.edit.add :parts_bottom, "edit_comments_enabled", :before => "edit_timestamp"
-    admin.page.index.add :sitemap_head, "index_head_view_comments"
-    admin.page.index.add :node_row, "index_view_comments"
+    if admin.respond_to? :page
+      admin.page.edit.add :parts_bottom, "edit_comments_enabled", :before => "edit_timestamp"
+      admin.page.index.add :sitemap_head, "index_head_view_comments"
+      admin.page.index.add :node_row, "index_view_comments"
+    end
     
-    admin.tabs.add "Comments", "/admin/comments", :visibility => :developer
+    admin.tabs.add "Comments", "/admin/comments", :visibility => [:developer, :administrator]
   end
   
   def deactivate

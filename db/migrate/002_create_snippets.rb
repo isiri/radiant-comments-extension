@@ -35,28 +35,26 @@ CONTENT
     Snippet.new do |s|
       s.name = "comment_form"
       s.content = <<CONTENT
-<r:page>
-  <r:if_enable_comments>
-    <r:comment:form>
-      <h3>Post a comment</h3>
-      <p><label for="comment[author]">Your Name</label><br />
-      <r:comment:text_field_tag name="author" id="author" class="title required" /></p>
+<r:if_enable_comments>
+  <r:comment:form>
+    <h3>Post a comment</h3>
+    <p><label for="comment[author]">Your Name</label><br />
+    <r:comment:text_field_tag name="author" id="author" class="title required" /></p>
 
-      <p><label for="comment[author_email]">Your Email Address</label> (required, but not displayed)<br />
-      <r:comment:text_field_tag name="author_email" class="title required validate-email" /></p>
+    <p><label for="comment[author_email]">Your Email Address</label> (required, but not displayed)<br />
+    <r:comment:text_field_tag name="author_email" class="title required validate-email" /></p>
 
-      <p><label for="comment[author_url]">Your Web Address</label> (optional)<br />
-      <r:comment:text_field_tag name="author_url" class="regular validate-url" /></p>
+    <p><label for="comment[author_url]">Your Web Address</label> (optional)<br />
+    <r:comment:text_field_tag name="author_url" class="regular validate-url" /></p>
 
-      <p><label for="comment[content]">Your Comment</label><br />
-      <label for="comment[filter_id]">Filter: <r:comment:filter_box_tag name="filter_id" value="Textile" /><br />
-      <r:comment:text_area_tag name="content" class="regular required" rows="9" cols="40" /></p>
+    <p><label for="comment[content]">Your Comment</label><br />
+    <label for="comment[filter_id]">Filter: <r:comment:filter_box_tag name="filter_id" value="Textile" /><br />
+    <r:comment:text_area_tag name="content" class="regular required" rows="9" cols="40" /></p>
 
-      <r:comment:submit_tag name="submit" value="Save Comment" />
+    <r:comment:submit_tag name="submit" value="Save Comment" />
 
-    </r:comment:form>
-  </r:if_enable_comments>
-</r:page>
+  </r:comment:form>
+</r:if_enable_comments>
 CONTENT
     end.save
   end

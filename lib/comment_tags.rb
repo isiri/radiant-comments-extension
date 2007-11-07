@@ -30,7 +30,7 @@ module CommentTags
   tag "comment:each" do |tag|
     comments = tag.locals.page.comments
     result = []
-    comments.reverse.each do |comment|
+    comments.each do |comment|
       tag.locals.comment = comment
       result << tag.expand
     end
