@@ -29,7 +29,7 @@ class CommentsExtension < Radiant::Extension
       admin.page.index.add :node_row, "index_view_comments"
     end
     
-    admin.tabs.add "Comments", "/admin/comments", :visibility => [:developer, :administrator]
+    admin.tabs.add "Comments", "/admin/comments", :visibility => [:developer, :admin]
   end
   
   def deactivate
