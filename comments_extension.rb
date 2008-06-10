@@ -1,17 +1,23 @@
 #require 'page_extender'
-require_dependency 'application'
+# require_dependency 'application'
+require 'will_paginate'
 
 class CommentsExtension < Radiant::Extension
-  version "0.0.3"
+  version "0.0.4"
   description "Adds blog-like comments and comment functionality to pages."
   url "http://svn.artofmission.com/svn/plugins/radiant/extensions/comments/"
   
   define_routes do |map|
-    map.resources :comments, :path_prefix => "/pages/:page_id", :controller => "comments" # Regular routes for comments
+    # Regular routes for comments
+    map.resources :comments, :path_prefix => "/pages/:page_id", :controller => "comments" 
     map.with_options(:controller => 'admin/comments') do |comments| 
-      comments.resources :comments, :path_prefix => "/admin", :name_prefix => "admin_" # Admin routes for comments
-      comments.admin_page_comments 'admin/pages/:page_id/comments;:action'  # This route allows us to nicely pull up comments for a particular page
-      comments.admin_page_comment 'admin/pages/:page_id/comments/:id;:action' # This route pulls up a particular comment for a particular page
+      # Admin routes for comments
+      comments.resources :comments, :path_prefix => "/admin", :name_prefix => "admin_" 
+      # This route allows us to nicely pull up comments for a particular page
+      comments.admin_page_comments 'admin/pages/:page_id/comments;:action'  
+      # This route pulls up a particular comment for a particular page
+      comments.admin_page_comment 'admin/pages/:page_id/comments/:id;:action' 
+      comments.enable_comments '/pages/:page_id/enable_comments', :action => "enable"
     end
   end
   

@@ -17,7 +17,16 @@ This software "works for me", but it may not work for you, depending on your par
 
 Remember to run the migration. This _WILL_ delete any snippets named 'comment', 'comments' and 'comment_form' if these exist.
 
+=== Link Spam filters
+
+You can filter spam through Akismet or LinkSleeve.
+
+==== Akismet
+Set Radiant::Config["comments.spam_filter"] = "Akismet".
 Also remember to add a akismet key to the Comment model.
+
+==== LinkSleeve
+Set Radiant::Config["comments.spam_filter"] = "LinkSleeve" (or leave it blank - this is the default, because LinkSleeve is both free and config-free, and Akismet requires both registration and payment for commercial projects).
 
 === In your layout: 
 

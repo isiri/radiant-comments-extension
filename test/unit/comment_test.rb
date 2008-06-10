@@ -2,7 +2,6 @@ require 'test/unit'
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CommentTest < Test::Unit::TestCase
-  # Replace this with your real tests.
   
   def setup
     @controller = Admin::CommentsController.new
@@ -47,27 +46,13 @@ class CommentTest < Test::Unit::TestCase
     assert_equal(comment.content, comment_stored.content)
   end
   
-  def test_enable_comments
+  def test_that_only_ham_can_be_saved
+    LinkSleeve.stubs(:spam?).returns(true)
     
-    page = Page.new do |p|
-      p.title = "FOO"
-      p.slug = "foo"
-      p.breadcrumb = "FOO"
-      p.class_name = "Page"
-    end
+    comment = Comment.new
+    comment.valid?
     
-    page.save
-    
-    assert !page.enable_comments
-    
-    post :enable, :page_id => page.id
-    
-    assert_response :success
-    
-    page = Page.find_by_title("FOO")
-    
-    assert page.enable_comments
-    
+    assert comment.errors.on(:content_html)
   end
   
 end

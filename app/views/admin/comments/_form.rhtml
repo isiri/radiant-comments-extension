@@ -20,6 +20,11 @@
     </tr>
     
     <tr>
+      <th><label for="comment_filter_id">Comment Filter</label></th>
+      <td><%= f.select :filter_id, TextFilter.descendants, :class => "regular" %></td>
+    </tr>
+    
+    <tr>
       <th><label for="comment">Comment</label></th>
       <td><%= f.text_area :content, :rows => 5, :class => "regular" %></td>
     </tr>

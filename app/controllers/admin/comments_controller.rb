@@ -2,7 +2,9 @@ class Admin::CommentsController < ApplicationController
   
   def index
     @page = Page.find(params[:page_id]) if params[:page_id]
-    @comments = @page.nil? ? Comment.paginate(:page => params[:page]) : @page.comments.paginate(:page => params[:page])
+    @comments = @page.nil? ?
+      Comment.paginate(:page => params[:page]) :
+      @page.comments.paginate(:page => params[:page])
   end
   
   def destroy
@@ -32,11 +34,9 @@ class Admin::CommentsController < ApplicationController
     
     @page = Page.find(params[:page_id])
     
-    @page.enable_comments = 1
+    @page.update_attribute(:enable_comments, 1)
     
-    @page.update
-    
-    flash[:notice] = "Comments has been enabled for #{@page.title}"
+    flash[:notice] = "Comments have been enabled for #{@page.title}"
      
     redirect_to page_index_path
   end
